@@ -51,7 +51,7 @@ function SignUp() {
         }
       );
       if (res.ok) {
-        console.log("Data saved successfully!");
+        console.log("Data saved successfully");
       } else {
         console.log("Error saving data");
       }
