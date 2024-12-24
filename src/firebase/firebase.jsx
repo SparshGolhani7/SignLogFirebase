@@ -1,29 +1,6 @@
-import React from 'react'
-import {NavLink} from 'react-router-dom'
- 
-function Navbar() {
-  return (
-    <nav>
-        <ul>
-            <li><NavLink to={'/'}>Home</NavLink></li>
-            <li><NavLink to={'/SignUp'}>SignUp</NavLink></li>
-            <li><NavLink to={'/Login'}>Login</NavLink></li>
-        </ul>
-    </nav>
-  )
-}
-
-export default Navbar
-
-/// https://reactsignuplogin-default-rtdb.firebaseio.com/         
-
-// above link for firebase data base realtime data base  project name ReactSignupLogin
-
-
-
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -40,3 +17,5 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export default app;
