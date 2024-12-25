@@ -1,13 +1,19 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
  
-function Navbar() {
+function Navbar({loggedIn}) {
   return (
     <nav>
-        <ul>
-            <li><NavLink to={'/'}>Home</NavLink></li>
+        <ul>{!loggedIn && (<>
+          <li><NavLink to={'/'}>Login</NavLink></li>
             <li><NavLink to={'/SignUp'}>SignUp</NavLink></li>
-            <li><NavLink to={'/Login'}>Login</NavLink></li>
+        </>)}
+            
+            {loggedIn &&  (<>
+            <li><NavLink to={'/Home'}>Home</NavLink></li>
+            <li><NavLink to={'/Dashboard'}>Dashboard</NavLink></li>
+            </>)}
+            
         </ul>
     </nav>
   )

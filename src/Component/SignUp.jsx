@@ -54,6 +54,39 @@ function SignUp() {
     },
   });
 
+  
+  //commented normal realtime database
+  //     onSubmit: async (values,{resetForm}) => {
+  //       console.log("Form-submit", values);
+  //       await saveToFirebase(values);
+  //       resetForm();
+  //     },
+  //   });
+  // //jsj
+
+  //   const saveToFirebase = async (values) => {
+  //     try {
+  //       const res = await fetch(
+  //         "https://reactsignuplogin-default-rtdb.firebaseio.com/ReactForm.json",
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify(values),
+  //         }
+  //       );
+  //       if (res.ok) {
+  //         console.log("Data saved successfully");
+  //         navigate('/Login');
+  //       } else {
+  //         console.log("Error saving data");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //     }
+  //   };   till here it is commented
+
 
   return (
     <>
@@ -163,34 +196,3 @@ export default SignUp;
 
 
 
-  //commented normal realtime database
-  //     onSubmit: async (values,{resetForm}) => {
-  //       console.log("Form-submit", values);
-  //       await saveToFirebase(values);
-  //       resetForm();
-  //     },
-  //   });
-  // //jsj
-
-  //   const saveToFirebase = async (values) => {
-  //     try {
-  //       const res = await fetch(
-  //         "https://reactsignuplogin-default-rtdb.firebaseio.com/ReactForm.json",
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify(values),
-  //         }
-  //       );
-  //       if (res.ok) {
-  //         console.log("Data saved successfully");
-  //         navigate('/Login');
-  //       } else {
-  //         console.log("Error saving data");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error:", error);
-  //     }
-  //   };   till here it is commented

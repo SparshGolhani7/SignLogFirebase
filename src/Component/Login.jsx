@@ -3,8 +3,12 @@ import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
+import {useNavigate} from 'react-router-dom'
 
-function Login() {
+function Login({setLoggedIn}) {
+  const navigate = useNavigate();
+
+
   const validationSchema = Yup.object({
     email:Yup.string().email("Valid email is req").required("Email is required"),
     password:Yup.string().min(6,"min 6 digits or char req").required("password is required")
@@ -25,17 +29,22 @@ function Login() {
           const user = userCredential.user;
           alert("login scsfull")
           console.log(user);
+          setLoggedIn(true);
+          navigate('/Home')
+          
       })
       .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode, errorMessage)
+          setLoggedIn(false);
         });
       },
     });
 
+    
 
-  //   onSubmit:async(values)=>{
+  //   onSubmit:async(values)=>{                 commented from here to 
   //     console.log("logined",values);
   //     await getFromFirebase(values);
   //     resetForm();
@@ -61,7 +70,9 @@ function Login() {
   //     console.log("err",error);
   //     alert("err occured... plz try again")
   //   }
-  // }
+  // }   till here
+
+
   return (
     <div className="container">
       <div className="row">
@@ -98,7 +109,8 @@ function Login() {
                 <div style={{color:"red"}}>{formik.errors.password}</div>
               )}
             </div>
-            <button type='submit'>Login</button>
+            <button type='submit' className="login-btn">Login</button> 
+          
           </form>
         </div>
         </div>
@@ -106,3 +118,33 @@ function Login() {
   )
 }
 export default Login
+
+
+
+  //   onSubmit:async(values)=>{
+  //     console.log("logined",values);
+  //     await getFromFirebase(values);
+  //     resetForm();
+  //   },
+  // });
+
+  // const getFromFirebase = async(values)=>{
+  //   try{
+  //     const res = await fetch( "https://reactsignuplogin-default-rtdb.firebaseio.com/ReactForm.json");
+  //     // console.log("surbhi",res)
+  //     const data  = await res.json();
+  //     // console.log("susmita",data)
+
+  //     const users = Object.values(data);    // funciton of js for convert obj in arr
+  //     // console.log("sparsh",users)
+  //     const user = users.find((u)=> u.email ===values.email && u.password===values.password);
+  //     if (user){
+  //       alert("login scsfull")
+  //     }else{
+  //       alert("invalid email or pass")
+  //     }
+  //   } catch(error){
+  //     console.log("err",error);
+  //     alert("err occured... plz try again")
+  //   }
+  // }
